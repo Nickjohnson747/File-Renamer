@@ -49,6 +49,8 @@ class Window(QWidget, Ui_Window):
             self, "Choose Files to Rename", init_dir, filter=FILTERS
         )
         if len(files) > 0:
+            file_extension = filter[filter.index("*") : -1]
+            self.extension_label.setText(file_extension)
             src_dir_name = str(Path(files[0]).parent)
             self.dir_edit.setText(src_dir_name)
             for file in files:
