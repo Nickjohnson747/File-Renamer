@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# rprename/app.py
+# file_rename/app.py
 
 """This module provides the File Renamer application."""
 

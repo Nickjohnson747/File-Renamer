@@ -13,6 +13,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Window(object):
     def setupUi(self, Window):
+
+        # Main Window
         Window.setObjectName("Window")
         Window.resize(1369, 791)
         self.gridLayout = QtWidgets.QGridLayout(Window)
