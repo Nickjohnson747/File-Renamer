@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# rprename/views.py
+# file_rename/views.py
 
 """This module provides the File Renamer main window."""
 
@@ -39,4 +39,19 @@ class Window(QWidget, Ui_Window):
         self.load_files_button.clicked.connect(self.load_files)
 
     def load_files(self):
-        pass
+        self.dest_file_list.clear()
+        if self.dir_edit.text():
+            init_dir = self.dir_edit.text()
+        else:
+            init_dir = str(Path.home())
+
+        files, filter = QFileDialog.getOpenFileNames(
+            self, "Choose Files to Rename", init_dir, filter=FILTERS
+        )
+        if len(files) > 0:
+            src_dir_name = str(Path(files[0]).parent)
+            self.dir_edit.setText(src_dir_name)
+            for file in files:
+                self._files.append(Path(file))
+                self.src_file_list.addItem(file)
+            self._files_count = len(self._files)

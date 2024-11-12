@@ -15,23 +15,19 @@ class Ui_Window(object):
     def setupUi(self, Window):
         Window.setObjectName("Window")
         Window.resize(1369, 791)
-
         self.gridLayout = QtWidgets.QGridLayout(Window)
         self.gridLayout.setObjectName("gridLayout")
-
         self.splitter = QtWidgets.QSplitter(Window)
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
         self.splitter.setObjectName("splitter")
-
-        self.widget = QtWidgets.QWidget(self.splitter)
-        self.widget.setObjectName("widget")
-
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
+        self.layoutWidget = QtWidgets.QWidget(self.splitter)
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setObjectName("verticalLayout")
 
-        # Left box label
-        self.label_2 = QtWidgets.QLabel(self.widget)
+        # Files to Rename label
+        self.label_2 = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -40,19 +36,18 @@ class Ui_Window(object):
         self.label_2.setObjectName("label_2")
         self.verticalLayout.addWidget(self.label_2)
 
-        # Left box window
-        self.src_file_list = QtWidgets.QListWidget(self.widget)
+        # Files to Rename box list
+        self.src_file_list = QtWidgets.QListWidget(self.layoutWidget)
         self.src_file_list.setObjectName("src_file_list")
         self.verticalLayout.addWidget(self.src_file_list)
-
-        self.widget1 = QtWidgets.QWidget(self.splitter)
-        self.widget1.setObjectName("widget1")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget1)
+        self.layoutWidget1 = QtWidgets.QWidget(self.splitter)
+        self.layoutWidget1.setObjectName("layoutWidget1")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.layoutWidget1)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
 
-        # Right box label
-        self.label_3 = QtWidgets.QLabel(self.widget1)
+        # Renamed Files label
+        self.label_3 = QtWidgets.QLabel(self.layoutWidget1)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -61,14 +56,13 @@ class Ui_Window(object):
         self.label_3.setObjectName("label_3")
         self.verticalLayout_3.addWidget(self.label_3)
 
-        # Right box window
-        self.dest_file_list = QtWidgets.QListWidget(self.widget1)
+        # Renamed Files box list
+        self.dest_file_list = QtWidgets.QListWidget(self.layoutWidget1)
         self.dest_file_list.setObjectName("dest_file_list")
         self.verticalLayout_3.addWidget(self.dest_file_list)
-
         self.gridLayout.addWidget(self.splitter, 2, 0, 1, 3)
 
-        # Source directory text bar at top
+        # Source directory text box
         self.dir_edit = QtWidgets.QLineEdit(Window)
         self.dir_edit.setMinimumSize(QtCore.QSize(0, 30))
         self.dir_edit.setMaximumSize(QtCore.QSize(16777215, 30))
@@ -90,14 +84,14 @@ class Ui_Window(object):
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 3, 0, 1, 3)
 
-        # Load Files button
+        # Load files button
         self.load_files_button = QtWidgets.QPushButton(Window)
         self.load_files_button.setMinimumSize(QtCore.QSize(0, 30))
         self.load_files_button.setMaximumSize(QtCore.QSize(16777215, 30))
         self.load_files_button.setObjectName("load_files_button")
         self.gridLayout.addWidget(self.load_files_button, 1, 2, 1, 1)
 
-        # Prefix text bar at bottom
+        # Filename prefix text box
         self.prefix_edit = QtWidgets.QLineEdit(Window)
         self.prefix_edit.setMinimumSize(QtCore.QSize(0, 30))
         self.prefix_edit.setMaximumSize(QtCore.QSize(16777215, 30))
@@ -105,7 +99,7 @@ class Ui_Window(object):
         self.prefix_edit.setObjectName("prefix_edit")
         self.gridLayout.addWidget(self.prefix_edit, 4, 0, 1, 1)
 
-        # Progress bar
+        # progress bar
         self.progress_bar = QtWidgets.QProgressBar(Window)
         sizePolicy = QtWidgets.QSizePolicy(
             QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed
@@ -121,24 +115,15 @@ class Ui_Window(object):
         self.progress_bar.setObjectName("progress_bar")
         self.gridLayout.addWidget(self.progress_bar, 5, 0, 1, 3)
 
-        # Filename extension chooser
-        self.Extension_Choice_Box = QtWidgets.QComboBox(Window)
-        self.Extension_Choice_Box.setMinimumSize(QtCore.QSize(0, 30))
-        self.Extension_Choice_Box.setMaximumSize(QtCore.QSize(16777215, 30))
-        self.Extension_Choice_Box.setObjectName("Extension_Choice_Box")
-        self.Extension_Choice_Box.addItem("")
-        self.Extension_Choice_Box.addItem("")
-        self.Extension_Choice_Box.addItem("")
-        self.Extension_Choice_Box.addItem("")
-        self.Extension_Choice_Box.addItem("")
-        self.gridLayout.addWidget(self.Extension_Choice_Box, 4, 1, 1, 1)
-
         # Rename files button
         self.rename_files_button = QtWidgets.QPushButton(Window)
         self.rename_files_button.setMinimumSize(QtCore.QSize(0, 30))
         self.rename_files_button.setMaximumSize(QtCore.QSize(16777215, 30))
         self.rename_files_button.setObjectName("rename_files_button")
         self.gridLayout.addWidget(self.rename_files_button, 4, 2, 1, 1)
+        self.extension_label = QtWidgets.QLabel(Window)
+        self.extension_label.setObjectName("extension_label")
+        self.gridLayout.addWidget(self.extension_label, 4, 1, 1, 1)
 
         self.retranslateUi(Window)
         QtCore.QMetaObject.connectSlotsByName(Window)
@@ -154,13 +139,9 @@ class Ui_Window(object):
         self.prefix_edit.setPlaceholderText(
             _translate("Window", "Rename your files to...")
         )
-        self.Extension_Choice_Box.setItemText(0, _translate("Window", "*.jpg"))
-        self.Extension_Choice_Box.setItemText(1, _translate("Window", "*.json"))
-        self.Extension_Choice_Box.setItemText(2, _translate("Window", "*.pdf"))
-        self.Extension_Choice_Box.setItemText(3, _translate("Window", "*.png"))
-        self.Extension_Choice_Box.setItemText(4, _translate("Window", "*.txt"))
         self.rename_files_button.setText(_translate("Window", "&Rename"))
         self.rename_files_button.setShortcut(_translate("Window", "R"))
+        self.extension_label.setText(_translate("Window", "*.jpg"))
 
 
 if __name__ == "__main__":
